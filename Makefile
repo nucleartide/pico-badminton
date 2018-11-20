@@ -1,3 +1,7 @@
+build:
+	@elm make src/Main.elm
+.PHONY: build
+
 start:
 	@elm reactor &
 	@open http://localhost:8000

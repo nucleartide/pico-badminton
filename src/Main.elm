@@ -32,8 +32,8 @@ type Button
 --
 
 type PlayerSide
-  = Left
-  | Right
+  = LeftSide
+  | RightSide
 
 type PlayerStance
   = Forehand
@@ -63,13 +63,11 @@ type alias PlayerFields =
   { position     : Vec3
   , velocity     : Vec3
   , acceleration : Vec3
-  , playerSide   : PlayerSide
   , playerStance : PlayerStance
   , desiredSpeed : Float
   , desiredSpeedLerpFactor : Float
   , playerSide : PlayerSide
   , playerDir : PlayerDir
-  , playerStance : PlayerStance
   , swingState : SwingState
   , swingFrames : Float
   , swingPower : Float
@@ -189,6 +187,7 @@ drawLine _ = 0
 -- Game logic.
 --
 
+-- i would consider this a util
 reach : (Vec3, Vec3) -> Vec3 -> (Vec3, Vec3)
 reach _ _ = (zero, zero)
 
