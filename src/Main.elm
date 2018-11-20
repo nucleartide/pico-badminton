@@ -31,29 +31,75 @@ type Button
 -- for how to extend record types.
 --
 
+type PlayerSide
+  = Left
+  | Right
+
+type PlayerStance
+  = Forehand
+  | Backhand
+
+type SwingState
+  = Idle
+  | Winding
+  | Swing
+
 type alias Model =
   { player         : Player
   , renderedPlayer : RenderedPlayer
   , camera         : Camera
+  , score          : Int
   }
 
-type alias Player =
+type Player
+  = Server   PlayerFields
+  | Receiver PlayerFields
+
+type PlayerDir
+  = Forward
+  | Backward
+
+type alias PlayerFields =
   { position     : Vec3
   , velocity     : Vec3
   , acceleration : Vec3
+  , playerSide   : PlayerSide
+  , playerStance : PlayerStance
+  , desiredSpeed : Float
+  , desiredSpeedLerpFactor : Float
+  , playerSide : PlayerSide
+  , playerDir : PlayerDir
+  , playerStance : PlayerStance
+  , swingState : SwingState
+  , swingFrames : Float
+  , swingPower : Float
+  -- arm points
+  -- arm screen points
   }
+
+-- move player
+-- move arm
+-- bounds check
 
 type alias RenderedPlayer =
   { screenPosition: Vec3
   }
 
-type alias Camera =
-  { pos: Vec3
-  }
-
 type alias Ball =
   { position : Vec3
+  , shadowPosition : Vec3
+  , screenPosition : Vec3
+  , screenShadowPosition : Vec3
+  , velocity : Vec3
+  , acceleration : Vec3
+  , drag : Vec3
+  , isKinematic: Bool
   }
+
+-- net
+-- net collisions
+
+-- court
 
 type GameRound
   = PreServe
@@ -125,3 +171,40 @@ lerp _ _ _ = 0
 
 isClockwise : List Vec3 -> Bool
 isClockwise _ = False
+
+--
+-- Render.
+--
+
+-- TODO: Z-sorting.
+
+type alias Line =
+  { stuff : Int
+  }
+
+drawLine : Line -> Int
+drawLine _ = 0
+
+--
+-- Game logic.
+--
+
+reach : (Vec3, Vec3) -> Vec3 -> (Vec3, Vec3)
+reach _ _ = (zero, zero)
+
+--
+-- Camera.
+--
+
+type alias Camera =
+  { position : Vec3
+  , xAngle   : Float
+  , mx       : Mat3
+  , yAngle   : Float
+  , my       : Mat3
+  , dist     : Float
+  , fov      : Float
+  }
+
+camProject : Camera -> Vec3 -> Vec3
+camProject _ _ = zero
