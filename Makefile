@@ -1,5 +1,6 @@
 build:
 	@elm make src/Main.elm
+	@elm-format src/ --yes
 .PHONY: build
 
 start:

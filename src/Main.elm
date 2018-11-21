@@ -1,28 +1,47 @@
+module Main exposing (Ball, Button(..), Camera, GameRound(..), Line, Mat3, Model, Msg(..), Player(..), PlayerDir(..), PlayerFields, PlayerSide(..), PlayerStance(..), RenderedPlayer, SwingState(..), Vec3, add, camProject, cross, dist, dot, drawLine, isClockwise, isEqual, lerp, magnitude, main, mul, mulMat3, normalize, reach, rotateX, rotateY, round, scale, sub, update, vecLerp, view, zero, zeroMat)
+
 import Browser
 import Html exposing (text)
+import Player
+
+
 
 --
 -- Boilerplate.
 --
 
-main = Browser.sandbox { init = 0, update = update, view = view }
-update _     model = model
-view   model       = text "hello world"
+
+main =
+    Browser.sandbox { init = 0, update = update, view = view }
+
+
+update _ model =
+    model
+
+
+view model =
+    text "hello world"
+
+
 
 --
 -- Messages.
 --
 
-type Msg =
-  Something
+
+type Msg
+    = Something
+
 
 type Button
-  = Left
-  | Right
-  | Up
-  | Down
-  | Z
-  | X
+    = Left
+    | Right
+    | Up
+    | Down
+    | Z
+    | X
+
+
 
 --
 -- Model.
@@ -31,179 +50,250 @@ type Button
 -- for how to extend record types.
 --
 
+
 type PlayerSide
-  = LeftSide
-  | RightSide
+    = LeftSide
+    | RightSide
+
 
 type PlayerStance
-  = Forehand
-  | Backhand
+    = Forehand
+    | Backhand
+
 
 type SwingState
-  = Idle
-  | Winding
-  | Swing
+    = Idle
+    | Winding
+    | Swing
+
 
 type alias Model =
-  { player         : Player
-  , renderedPlayer : RenderedPlayer
-  , camera         : Camera
-  , score          : Int
-  }
+    { player : Player
+    , renderedPlayer : RenderedPlayer
+    , camera : Camera
+    , score : Int
+    }
+
 
 type Player
-  = Server   PlayerFields
-  | Receiver PlayerFields
+    = Server PlayerFields
+    | Receiver PlayerFields
+
 
 type PlayerDir
-  = Forward
-  | Backward
+    = Forward
+    | Backward
+
 
 type alias PlayerFields =
-  { position     : Vec3
-  , velocity     : Vec3
-  , acceleration : Vec3
-  , playerStance : PlayerStance
-  , desiredSpeed : Float
-  , desiredSpeedLerpFactor : Float
-  , playerSide : PlayerSide
-  , playerDir : PlayerDir
-  , swingState : SwingState
-  , swingFrames : Float
-  , swingPower : Float
-  -- arm points
-  -- arm screen points
-  }
+    { position : Vec3
+    , velocity : Vec3
+    , acceleration : Vec3
+    , playerStance : PlayerStance
+    , desiredSpeed : Float
+    , desiredSpeedLerpFactor : Float
+    , playerSide : PlayerSide
+    , playerDir : PlayerDir
+    , swingState : SwingState
+    , swingFrames : Float
+    , swingPower : Float
+
+    -- arm points
+    -- arm screen points
+    }
+
+
 
 -- move player
 -- move arm
 -- bounds check
 
+
 type alias RenderedPlayer =
-  { screenPosition: Vec3
-  }
+    { screenPosition : Vec3
+    }
+
 
 type alias Ball =
-  { position : Vec3
-  , shadowPosition : Vec3
-  , screenPosition : Vec3
-  , screenShadowPosition : Vec3
-  , velocity : Vec3
-  , acceleration : Vec3
-  , drag : Vec3
-  , isKinematic: Bool
-  }
+    { position : Vec3
+    , shadowPosition : Vec3
+    , screenPosition : Vec3
+    , screenShadowPosition : Vec3
+    , velocity : Vec3
+    , acceleration : Vec3
+    , drag : Vec3
+    , isKinematic : Bool
+    }
+
+
 
 -- net
 -- net collisions
-
 -- court
 
+
 type GameRound
-  = PreServe
-  | Serving
-  | Rally
-  | PostRally
+    = PreServe
+    | Serving
+    | Rally
+    | PostRally
+
+
 
 --
 -- Utils.
 --
 
-type alias Vec3 = (Float, Float, Float)
 
-type alias Mat3 = (Vec3, Vec3, Vec3)
+type alias Vec3 =
+    ( Float, Float, Float )
+
+
+type alias Mat3 =
+    ( Vec3, Vec3, Vec3 )
+
 
 zero : Vec3
-zero = (0, 0, 0)
+zero =
+    ( 0, 0, 0 )
+
 
 zeroMat : Mat3
-zeroMat = (zero, zero, zero)
+zeroMat =
+    ( zero, zero, zero )
+
 
 add : Vec3 -> Vec3 -> Vec3
-add _ _ = zero
+add _ _ =
+    zero
+
 
 sub : Vec3 -> Vec3 -> Vec3
-sub _ _ = zero
+sub _ _ =
+    zero
+
 
 mul : Vec3 -> Vec3 -> Vec3
-mul _ _ = zero
+mul _ _ =
+    zero
+
 
 mulMat3 : Vec3 -> Mat3 -> Vec3
-mulMat3 _ _ = zero
+mulMat3 _ _ =
+    zero
+
 
 dot : Vec3 -> Vec3 -> Float
-dot _ _ = 0
+dot _ _ =
+    0
+
 
 cross : Vec3 -> Vec3 -> Vec3
-cross _ _ = zero
+cross _ _ =
+    zero
+
 
 scale : Vec3 -> Float -> Vec3
-scale _ _ = zero
+scale _ _ =
+    zero
+
 
 magnitude : Vec3 -> Float
-magnitude _ = 0
+magnitude _ =
+    0
+
 
 dist : Vec3 -> Vec3 -> Float
-dist _ _ = 0
+dist _ _ =
+    0
+
 
 normalize : Vec3 -> Vec3
-normalize _ = zero
+normalize _ =
+    zero
+
 
 vecLerp : Vec3 -> Vec3 -> Vec3
-vecLerp _ _ = zero
+vecLerp _ _ =
+    zero
+
 
 isEqual : Vec3 -> Vec3 -> Bool
-isEqual _ _ = False
+isEqual _ _ =
+    False
+
 
 rotateX : Float -> Mat3
-rotateX _ = zeroMat
+rotateX _ =
+    zeroMat
+
 
 rotateY : Float -> Mat3
-rotateY _ = zeroMat
+rotateY _ =
+    zeroMat
+
 
 round : Float -> Float
-round _ = 0
+round _ =
+    0
+
 
 lerp : Float -> Float -> Float -> Float
-lerp _ _ _ = 0
+lerp _ _ _ =
+    0
+
 
 isClockwise : List Vec3 -> Bool
-isClockwise _ = False
+isClockwise _ =
+    False
+
+
 
 --
 -- Render.
 --
-
 -- TODO: Z-sorting.
 
+
 type alias Line =
-  { stuff : Int
-  }
+    { stuff : Int
+    }
+
 
 drawLine : Line -> Int
-drawLine _ = 0
+drawLine _ =
+    0
+
+
 
 --
 -- Game logic.
 --
-
 -- i would consider this a util
-reach : (Vec3, Vec3) -> Vec3 -> (Vec3, Vec3)
-reach _ _ = (zero, zero)
+
+
+reach : ( Vec3, Vec3 ) -> Vec3 -> ( Vec3, Vec3 )
+reach _ _ =
+    ( zero, zero )
+
+
 
 --
 -- Camera.
 --
 
+
 type alias Camera =
-  { position : Vec3
-  , xAngle   : Float
-  , mx       : Mat3
-  , yAngle   : Float
-  , my       : Mat3
-  , dist     : Float
-  , fov      : Float
-  }
+    { position : Vec3
+    , xAngle : Float
+    , mx : Mat3
+    , yAngle : Float
+    , my : Mat3
+    , dist : Float
+    , fov : Float
+    }
+
 
 camProject : Camera -> Vec3 -> Vec3
-camProject _ _ = zero
+camProject _ _ =
+    zero
