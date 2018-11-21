@@ -1,4 +1,4 @@
-module Main exposing (Ball, Button(..), Camera, GameRound(..), Line, Mat3, Model, Msg(..), Player(..), PlayerDir(..), PlayerFields, PlayerSide(..), PlayerStance(..), RenderedPlayer, SwingState(..), Vec3, add, camProject, cross, dist, dot, drawLine, isClockwise, isEqual, lerp, magnitude, main, mul, mulMat3, normalize, reach, rotateX, rotateY, round, scale, sub, update, vecLerp, view, zero, zeroMat)
+module Main exposing (Ball, Camera, GameRound(..), Line, Mat3, Model, PlayerDir(..), PlayerSide(..), Vec3, add, camProject, cross, dist, dot, drawLine, isClockwise, isEqual, lerp, magnitude, main, mul, mulMat3, normalize, reach, rotateX, rotateY, round, scale, sub, update, vecLerp, view, zero, zeroMat)
 
 import Browser
 import Html exposing (text)
@@ -27,22 +27,6 @@ view model =
 --
 -- Messages.
 --
-
-
-type Msg
-    = Something
-
-
-type Button
-    = Left
-    | Right
-    | Up
-    | Down
-    | Z
-    | X
-
-
-
 --
 -- Model.
 --
@@ -56,28 +40,18 @@ type PlayerSide
     | RightSide
 
 
-type PlayerStance
-    = Forehand
-    | Backhand
-
-
-type SwingState
-    = Idle
-    | Winding
-    | Swing
-
-
 type alias Model =
-    { player : Player
-    , renderedPlayer : RenderedPlayer
-    , camera : Camera
+    { camera : Camera
     , score : Int
     }
 
 
-type Player
-    = Server PlayerFields
-    | Receiver PlayerFields
+
+{-
+   type Player
+       = Server PlayerFields
+       | Receiver PlayerFields
+-}
 
 
 type PlayerDir
@@ -85,33 +59,8 @@ type PlayerDir
     | Backward
 
 
-type alias PlayerFields =
-    { position : Vec3
-    , velocity : Vec3
-    , acceleration : Vec3
-    , playerStance : PlayerStance
-    , desiredSpeed : Float
-    , desiredSpeedLerpFactor : Float
-    , playerSide : PlayerSide
-    , playerDir : PlayerDir
-    , swingState : SwingState
-    , swingFrames : Float
-    , swingPower : Float
 
-    -- arm points
-    -- arm screen points
-    }
-
-
-
--- move player
--- move arm
 -- bounds check
-
-
-type alias RenderedPlayer =
-    { screenPosition : Vec3
-    }
 
 
 type alias Ball =

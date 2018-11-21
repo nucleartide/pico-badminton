@@ -1,9 +1,9 @@
-module Player exposing (Draw, Player, Rigidbody)
+module Player exposing (Draw, KinematicBody, Player)
 
-import Math exposing (Vec3)
+import Math exposing (Vec2, Vec3)
 
 
-type alias Rigidbody a =
+type alias KinematicBody a =
     { a
         | position : Vec3
         , velocity : Vec3
@@ -12,11 +12,35 @@ type alias Rigidbody a =
 
 
 type alias Player =
-    Rigidbody
-        { foo : String
+    KinematicBody
+        { movementSpeed : Float
+        , movementSpeedLerp : Float
         }
 
 
+type WithRacket
+    = Idle Player
+    | Winding Player Angle
+    | Swinging Player Power
+
+
+type alias Angle =
+    Float
+
+
+type alias Power =
+    Float
+
+
+
+-- arm points
+
+
 type alias Draw =
-    { bar : String
+    { screenPosition : Vec2
     }
+
+
+
+-- move player
+-- move arm
