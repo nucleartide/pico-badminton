@@ -78,3 +78,7 @@ update (ButtonMessage buttonState) player =
 translate :: ButtonState -> Movement
 translate b
   = undefined
+
+-- TODO: jump
+-- TODO: swing
+-- TODO: lunge

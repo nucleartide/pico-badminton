@@ -1,67 +1,18 @@
-module Main exposing (main, update, view)
-
-import Browser
-import Html exposing (text)
-import Player
-
-
-
---
--- Boilerplate.
---
-
-
-main =
-    Browser.sandbox { init = 0, update = update, view = view }
-
-
-update _ model =
-    model
-
-
-view model =
-    text "hello world"
-
-
-
 {-
-
-   --
-   -- Messages.
-   --
-   --
-   -- Model.
-   --
-   -- See https://gist.github.com/theburningmonk/0610b75b24b3b7ca0d1c.
-   -- for how to extend record types.
-   --
-
 
    type PlayerSide
        = LeftSide
        | RightSide
 
-
-   type alias Model =
-       { camera : Camera
-       , score : Int
-       }
-
-
-
       type Player
           = Server PlayerFields
           | Receiver PlayerFields
-
 
    type PlayerDir
        = Forward
        | Backward
 
-
-
    -- bounds check
-
 
    type alias Ball =
        { position : Vec3

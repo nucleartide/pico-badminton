@@ -1,10 +1,5 @@
 module Player exposing (Meter(..))
 
-
--- TODO: define message type
--- move : Player -> Player
-
-
 {-
    type alias Angle =
        Float
@@ -13,10 +8,6 @@ module Player exposing (Meter(..))
        = Idle Player Angle
        | Winding Player Angle
        | Swinging Player Angle Power
-
-   move : KinematicBody a -> KinematicBody a
-   move k =
-       k
 
       -- arm points
 
@@ -28,6 +19,4 @@ module Player exposing (Meter(..))
 
 
       -- move arm
-
-   -- jump
 -}

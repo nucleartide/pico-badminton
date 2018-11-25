@@ -1,5 +1,7 @@
 import Badminton.Player
 
+-- TODO: score
+
 {-
 
 -- MODEL
