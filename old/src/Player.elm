@@ -1,40 +1,6 @@
 module Player exposing (Meter(..))
 
 
-type SpeedPerSecond
-    = ValidSpeed (Meter Float)
-    | InvalidSpeed
-
-
-speedPerSecond : Float -> SpeedPerSecond
-speedPerSecond n =
-    if n < 0 then
-        InvalidSpeed
-
-    else
-        ValidSpeed (Meter n)
-
-
-type Lerp
-    = ValidLerp Float
-    | InvalidLerp
-
-
-lerp : Float -> Lerp
-lerp n =
-    if n < 0 || 1 < n then
-        InvalidLerp
-
-    else
-        ValidLerp n
-
-
-type alias Player =
-    KinematicBody
-        { movementSpeed : SpeedPerSecond
-        , movementSpeedLerp : Lerp
-        }
-
 -- TODO: define message type
 -- move : Player -> Player
 

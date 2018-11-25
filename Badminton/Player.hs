@@ -1,11 +1,6 @@
-module Badminton.Player
-  ( Meter(..)
-  , Vec3(..)
-  , WorldSpace(..)
-  , LocalSpace(..)
-  , Player(..)
-  , speedPerSecond
-  ) where
+module Badminton.Player where
+
+import Badminton.Message
 
 data Meter
   = Meter Float
@@ -25,9 +20,11 @@ data LocalSpace
 
 data Player
   = Player
-    { position     :: WorldSpace
-    , velocity     :: WorldSpace
-    , acceleration :: WorldSpace
+    { position          :: WorldSpace
+    , velocity          :: WorldSpace
+    , acceleration      :: WorldSpace
+    , movementSpeed     :: SpeedPerSecond
+    , movementSpeedLerp :: Lerp
     } deriving Show
 
 data SpeedPerSecond
@@ -41,3 +38,43 @@ speedPerSecond (Meter m) =
     InvalidSpeed
   else
     ValidSpeed (Meter m)
+
+data Lerp
+  = ValidLerp Float
+  | InvalidLerp
+  deriving Show
+
+lerp :: Float -> Lerp
+lerp t =
+  if t < 0 || 1 < t then
+    InvalidLerp
+  else
+    ValidLerp t
+
+data Movement
+  = Left
+  | Right
+  | Up
+  | Down
+  | UpLeft
+  | UpRight
+  | DownLeft
+  | DownRight
+
+-- Move the player by one timestep.
+move :: Player -> Movement -> Player
+move p = undefined
+
+-- Receive input events.
+-- Note: this is where you can compose game verbs.
+update :: Message -> Player -> Player
+update (ButtonMessage buttonState) player =
+	let
+		movement = translate buttonState
+	in
+		move player movement
+
+-- Translate ButtonState record to Movement.
+translate :: ButtonState -> Movement
+translate b
+  = undefined
