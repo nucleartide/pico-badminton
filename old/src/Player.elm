@@ -1,20 +1,6 @@
 module Player exposing (Meter(..))
 
 
-type alias KinematicBody a =
-    { a
-        | position : WorldSpace
-        , velocity : WorldSpace
-        , acceleration : WorldSpace
-    }
-
-
-type alias KinematicBodyExample =
-    KinematicBody
-        { foo : String
-        }
-
-
 type SpeedPerSecond
     = ValidSpeed (Meter Float)
     | InvalidSpeed
