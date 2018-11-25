@@ -1,17 +1,5 @@
 {-
 
-   type PlayerSide
-       = LeftSide
-       | RightSide
-
-      type Player
-          = Server PlayerFields
-          | Receiver PlayerFields
-
-   type PlayerDir
-       = Forward
-       | Backward
-
    -- bounds check
 
    type alias Ball =
@@ -27,8 +15,6 @@
 
 
 
-   -- net
-   -- net collisions
    -- court
 
 

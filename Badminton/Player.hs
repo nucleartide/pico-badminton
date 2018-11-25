@@ -80,5 +80,9 @@ translate b
   = undefined
 
 -- TODO: jump
--- TODO: swing
+-- TODO: swing:
+--   arm points,
+--   idle, winding, and swinging states
+--   power
+--   winding angle
 -- TODO: lunge
