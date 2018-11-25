@@ -86,3 +86,4 @@ translate b
 --   power
 --   winding angle
 -- TODO: lunge
+-- TODO: bounds check, but use composition

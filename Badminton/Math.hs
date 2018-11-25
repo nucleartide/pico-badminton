@@ -1,36 +1,6 @@
+-- TODO
+
 {-
-
-   -- bounds check
-
-   type alias Ball =
-       { position : Vec3
-       , shadowPosition : Vec3
-       , screenPosition : Vec3
-       , screenShadowPosition : Vec3
-       , velocity : Vec3
-       , acceleration : Vec3
-       , drag : Vec3
-       , isKinematic : Bool
-       }
-
-
-
-   -- court
-
-
-   type GameRound
-       = PreServe
-       | Serving
-       | Rally
-       | PostRally
-
-
-
-   --
-   -- Utils.
-   --
-
-
    type alias Vec3 =
        ( Float, Float, Float )
 
@@ -133,54 +103,7 @@
    isClockwise _ =
        False
 
-
-
-   --
-   -- Render.
-   --
-   -- TODO: Z-sorting.
-
-
-   type alias Line =
-       { stuff : Int
-       }
-
-
-   drawLine : Line -> Int
-   drawLine _ =
-       0
-
-
-
-   --
-   -- Game logic.
-   --
-   -- i would consider this a util
-
-
    reach : ( Vec3, Vec3 ) -> Vec3 -> ( Vec3, Vec3 )
    reach _ _ =
        ( zero, zero )
-
-
-
-   --
-   -- Camera.
-   --
-
-
-   type alias Camera =
-       { position : Vec3
-       , xAngle : Float
-       , mx : Mat3
-       , yAngle : Float
-       , my : Mat3
-       , dist : Float
-       , fov : Float
-       }
-
-
-   camProject : Camera -> Vec3 -> Vec3
-   camProject _ _ =
-       zero
 -}
