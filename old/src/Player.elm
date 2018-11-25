@@ -1,33 +1,6 @@
 module Player exposing (Meter(..))
 
 
-type Meter number
-    = Meter number
-
-
-meterExample : Meter Float
-meterExample =
-    Meter 0.4
-
-
-type Vec3
-    = Vec3 (Meter Float) (Meter Float) (Meter Float)
-
-
-vec3Example : Vec3
-vec3Example =
-    Vec3 (Meter 0.2) (Meter 0.3) (Meter 0.4)
-
-
-type WorldSpace
-    = WorldSpace Vec3
-
-
-worldSpaceExample : WorldSpace
-worldSpaceExample =
-    WorldSpace (Vec3 (Meter 0.2) (Meter 0.3) (Meter 0.4))
-
-
 type alias KinematicBody a =
     { a
         | position : WorldSpace
