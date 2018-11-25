@@ -1,3 +1,5 @@
+module Badminton.Render where
+
 {-
    --
    -- Render.

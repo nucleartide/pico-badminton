@@ -1,3 +1,5 @@
+module Badminton.Camera where
+
 -- TODO
 
 {-

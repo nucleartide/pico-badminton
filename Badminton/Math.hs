@@ -1,3 +1,5 @@
+module Badminton.Math where
+
 -- TODO
 
 {-
