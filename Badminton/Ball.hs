@@ -1,5 +1,10 @@
 module Badminton.Ball where
 
+data Ball
+  = Ball
+    { foo :: String
+    }
+
 -- TODO
 
 {-

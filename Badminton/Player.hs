@@ -79,11 +79,33 @@ translate :: ButtonState -> Movement
 translate b
   = undefined
 
--- TODO: jump
--- TODO: swing:
+data WithRacket
+  = Idle      Player
+  | WindingUp Player
+  | Swinging  Player
+
+data BallRange
+  = InRange
+  | OutOfRange
+
+-- ( Idle, InRange )
+
+-- idle -> windup
+-- windup -> windup
+-- swing X, need to follow through
+-- if ball is in range, follow
+-- else, follow predefined path
+windUp :: WindingUp -> WindingUp
+windUp = undefined
+
+swing :: Swinging -> Ball -> Swinging
+swing = undefined
+
+-- swing at:
+
+-- internal representation:
 --   arm points,
---   idle, winding, and swinging states
 --   power
 --   winding angle
--- TODO: lunge
--- TODO: bounds check, but use composition
+
+-- TODO: more nuanced movement: jump, lunge, bounds check
