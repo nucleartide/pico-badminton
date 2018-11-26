@@ -4,5 +4,5 @@
 # https://github.com/commercialhaskell/stack/issues/3651#issuecomment-371032374
 # for details.
 repl:
-	@stack exec -- ghci
+	@stack exec -- ghci -Wall
 .PHONY: repl
