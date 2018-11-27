@@ -1,7 +1,7 @@
 module Badminton.Message where
 
 data Message
-  = ButtonMessage ButtonState
+  = Button ButtonState
 
 data ButtonState
   = ButtonState

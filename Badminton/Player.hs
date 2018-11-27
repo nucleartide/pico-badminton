@@ -18,14 +18,19 @@ data LocalSpace
   = LocalSpace Vec3
   deriving Show
 
-data Player
-  = Player
+data Player'
+  = Player'
     { position          :: WorldSpace
     , velocity          :: WorldSpace
     , acceleration      :: WorldSpace
     , movementSpeed     :: SpeedPerSecond
     , movementSpeedLerp :: Lerp
     } deriving Show
+
+data Player
+  = Idle      Player'
+  | WindingUp Player'
+  | Swinging  Player'
 
 data SpeedPerSecond
   = ValidSpeed Meter
@@ -51,7 +56,7 @@ lerp t =
   else
     ValidLerp t
 
-data Movement
+data Direction
   = Left
   | Right
   | Up
@@ -62,41 +67,65 @@ data Movement
   | DownRight
 
 -- Move the player by one timestep.
-move :: Player -> Movement -> Player
-move p = undefined
+moveIn :: Player -> Direction -> Player
+moveIn p = undefined
 
 -- Receive input events.
 -- Note: this is where you can compose game verbs.
-update :: Message -> Player -> Player
-update (ButtonMessage buttonState) player =
+update :: Message -> Player -> Ball -> Player
+update (ButtonMessage buttonState) player ball =
 	let
-		movement = translate buttonState
+		direction = translate buttonState
 	in
-		move player movement
+    (((player `moveIn` direction) `windUp` ball) `swing` ball)
+
+update :: Message -> Player -> Ball -> Player
+
+update (Button state) (Idle player) ball =
+  undefined
+  -- move
+
+update (Button state) (WindingUp player) ball =
+  undefined
+  -- move
+  -- windupbehind ball
+
+update (Button state) (Swinging player) ball =
+  undefined
+  -- move
+  -- swingat ball
+
+--
+--
+--
 
 -- Translate ButtonState record to Movement.
-translate :: ButtonState -> Movement
-translate b
-  = undefined
-
-data WithRacket
-  = Idle      Player
-  | WindingUp Player
-  | Swinging  Player
+translate :: ButtonState -> Direction
+translate b =
+  undefined
 
 data BallRange
   = InRange
   | OutOfRange
 
--- ( Idle, InRange )
+data WindUp
+  = Idle   Player
+  | WindUp Player
 
--- idle -> windup
--- windup -> windup
--- swing X, need to follow through
 -- if ball is in range, follow
 -- else, follow predefined path
-windUp :: WindingUp -> WindingUp
-windUp = undefined
+windUp :: Player -> Ball -> Player
+
+windUp :: (WindUp, BallRange) -> WindUp
+windUp (Idle InRange) =
+  -- Then 
+  undefined
+windUp (Idle OutOfRange) =
+  undefined
+windUp (WindUp InRange) =
+  undefined
+windUp (WindUp OutOfRange) =
+  undefined
 
 swing :: Swinging -> Ball -> Swinging
 swing = undefined
