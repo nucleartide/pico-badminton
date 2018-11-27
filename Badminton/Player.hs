@@ -86,6 +86,7 @@ update (Button state) (Idle player) ball =
   -- move
 
 update (Button state) (WindingUp player) ball =
+  -- return new player state
   undefined
   -- move
   -- windupbehind ball
