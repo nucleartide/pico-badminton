@@ -2,6 +2,8 @@
 
 Game design specification for Pico Badminton: a game about glory, smash shots, and hitting a shuttlecock back and forth...
 
+<img src="https://user-images.githubusercontent.com/914228/49140124-72986500-f2c1-11e8-8a21-2d6b4291c1dc.gif" alt="">
+
 <br>
 
 ## Motivation
