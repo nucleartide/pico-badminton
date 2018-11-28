@@ -1,4 +1,6 @@
-module Badminton.Ball where
+module Badminton.Ball
+  ( Ball
+  ) where
 
 data Ball
   = Ball

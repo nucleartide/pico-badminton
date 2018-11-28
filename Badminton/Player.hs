@@ -1,23 +1,37 @@
-module Badminton.Player where
+module Badminton.Player
+  ( Player(..)
+  , Player'(..)
+  , update
+  , draw
+  ) where
 
 import Badminton.Message
+import Badminton.Math
+import Badminton.Ball
 
-data Meter
-  = Meter Float
+--
+-- Player.
+--
+
+data Player
+  = Idle      Player'
+  | WindingUp Player'
+  | Swinging  Player'
   deriving Show
 
-data Vec3
-  = Vec3 Meter Meter Meter
-  deriving Show
+--
+-- Update.
+--
 
-data WorldSpace
-  = WorldSpace Vec3
-  deriving Show
+--
+-- Draw.
+--
 
-data LocalSpace
-  = LocalSpace Vec3
-  deriving Show
+--
+--
+--
 
+{-
 data Player'
   = Player'
     { position          :: WorldSpace
@@ -26,36 +40,9 @@ data Player'
     , movementSpeed     :: SpeedPerSecond
     , movementSpeedLerp :: Lerp
     } deriving Show
+-}
 
-data Player
-  = Idle      Player'
-  | WindingUp Player'
-  | Swinging  Player'
-
-data SpeedPerSecond
-  = ValidSpeed Meter
-  | InvalidSpeed
-  deriving Show
-
-speedPerSecond :: Meter -> SpeedPerSecond
-speedPerSecond (Meter m) =
-  if m < 0 then
-    InvalidSpeed
-  else
-    ValidSpeed (Meter m)
-
-data Lerp
-  = ValidLerp Float
-  | InvalidLerp
-  deriving Show
-
-lerp :: Float -> Lerp
-lerp t =
-  if t < 0 || 1 < t then
-    InvalidLerp
-  else
-    ValidLerp t
-
+{-
 data Direction
   = Left
   | Right
@@ -65,13 +52,44 @@ data Direction
   | UpRight
   | DownLeft
   | DownRight
+-}
 
 -- Move the player by one timestep.
-moveIn :: Player -> Direction -> Player
-moveIn p = undefined
+-- moveIn :: Player -> Direction -> Player
+-- moveIn p = undefined
 
--- Receive input events.
--- Note: this is where you can compose game verbs.
+--
+-- START ======
+--
+
+data Player
+  = Idle      Player'
+  | WindingUp Player'
+  | Swinging  Player'
+  deriving Show
+
+update :: Message -> Player -> Ball -> (Player, Ball)
+
+update (Button state) (Idle player) ball =
+  undefined
+
+update (Button state) (WindingUp player) ball =
+  undefined
+
+update (Button state) (Swinging player) ball =
+  undefined
+
+draw :: Player -> IO ()
+draw =
+  undefined
+
+-- TODO: state transitions
+-- TODO: handle each case separately
+-- in range, out of range
+
+--
+
+{-
 update :: Message -> Player -> Ball -> Player
 update (ButtonMessage buttonState) player ball =
 	let
@@ -95,11 +113,13 @@ update (Button state) (Swinging player) ball =
   undefined
   -- move
   -- swingat ball
+-}
 
 --
---
+-- END ======
 --
 
+{-
 -- Translate ButtonState record to Movement.
 translate :: ButtonState -> Direction
 translate b =
@@ -119,7 +139,7 @@ windUp :: Player -> Ball -> Player
 
 windUp :: (WindUp, BallRange) -> WindUp
 windUp (Idle InRange) =
-  -- Then 
+  -- Then
   undefined
 windUp (Idle OutOfRange) =
   undefined
@@ -130,6 +150,7 @@ windUp (WindUp OutOfRange) =
 
 swing :: Swinging -> Ball -> Swinging
 swing = undefined
+-}
 
 -- swing at:
 
