@@ -34,6 +34,8 @@ data Player'
 
     -- Lerp towards `movementSpeed` by this factor per timestep.
     , movementSpeedLerp :: Lerp
+
+    , pose :: 
     }
   deriving Show
 
@@ -119,3 +121,9 @@ data Pose
 
 returnTo :: Player' -> Pose -> Player'
 returnTo = undefined
+
+idlePose :: Pose
+idlePose = undefined
+
+lerpPose :: Pose -> Pose -> Lerp -> Pose
+lerpPose = undefined
