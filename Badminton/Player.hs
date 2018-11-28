@@ -102,3 +102,11 @@ moveIn = undefined
 
 buttonToDirection :: Message -> Direction
 buttonToDirection = undefined
+
+--
+-- Player `reachFor` ball.
+--
+
+--
+-- Player `returnTo` pose.
+--
