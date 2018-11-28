@@ -35,7 +35,8 @@ data Player'
     -- Lerp towards `movementSpeed` by this factor per timestep.
     , movementSpeedLerp :: Lerp
 
-    , pose :: 
+    -- Current pose of arm joints.
+    , armPose :: Pose
     }
   deriving Show
 
