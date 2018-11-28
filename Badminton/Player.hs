@@ -107,6 +107,15 @@ buttonToDirection = undefined
 -- Player `reachFor` ball.
 --
 
+reachFor :: Player' -> Ball -> Player'
+reachFor = undefined
+
 --
 -- Player `returnTo` pose.
 --
+
+data Pose
+  = Pose LocalSpace LocalSpace LocalSpace LocalSpace
+
+returnTo :: Player' -> Pose -> Player'
+returnTo = undefined
