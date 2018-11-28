@@ -10,7 +10,6 @@ main =
       { Game.player = Player.Idle Player.Player'
         { Player.position = WorldSpace dummyVector
         , Player.velocity = WorldSpace dummyVector
-        , Player.acceleration = WorldSpace dummyVector
         , Player.movementSpeed = speedPerSecond (Meter 10)
         , Player.movementSpeedLerp = lerp 0.4
         }

@@ -1,10 +1,7 @@
 module Badminton.Message where
 
 data Message
-  = Button Button'
-
-data Button'
-  = Button'
+  = Button
     { left  :: Bool
     , right :: Bool
     , up    :: Bool
