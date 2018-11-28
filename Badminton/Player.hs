@@ -56,13 +56,20 @@ data Direction
 
 update :: Message -> Player -> Ball.Ball -> (Player, Ball.Ball)
 
-update (Button state) (Idle player) ball =
-  undefined
+update (Button btn) (Idle player) ball =
+  if o btn then
+    (WindingUp player, ball)
+  else
+    undefined
 
 update (Button state) (WindingUp player) ball =
-  undefined
+  if not $ o btn then
+    (Swinging player, ball)
+  else
+    undefined
 
 update (Button state) (Swinging player) ball =
+  -- TODO: Once swing is depleyed, return to idle state.
   undefined
 
 --

@@ -21,6 +21,7 @@ draw :: Game -> IO ()
 draw =
   undefined
 
+-- TODO: score
 -- TODO: server and receiver
 -- TODO: notion of side and player direction
 

@@ -1,10 +1,10 @@
 module Badminton.Message where
 
 data Message
-  = Button ButtonState
+  = Button Button'
 
-data ButtonState
-  = ButtonState
+data Button'
+  = Button'
     { left  :: Bool
     , right :: Bool
     , up    :: Bool

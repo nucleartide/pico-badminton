@@ -17,32 +17,3 @@ main =
       }
   in do
     print g
-
--- TODO: score
--- TODO: be able to instantiate game, and everything works
-
-{-
-
--- MODEL
-
-type alias Model = { ... }
-
-
--- UPDATE
-
-type Msg = Reset | ...
-
-update : Msg -> Model -> Model
-update msg model =
-  case msg of
-    Reset -> ...
-    ...
-
-
--- VIEW
-
-view : Model -> Html Msg
-view model =
-  ...
-
--}
