@@ -16,7 +16,6 @@ import qualified Badminton.Ball as Ball
 -- TODO: (nuanced movement) lunge
 -- TODO: (nuanced movement) bounds check
 -- TODO: swing: arm points, power, winding angle
--- TODO: move in direction verb
 --
 
 data Player
@@ -41,8 +40,6 @@ data Player'
 --
 -- Update.
 --
--- TODO: State transitions.
--- TODO: Handle each case separately.
 -- TODO: Consider in range, out of range.
 --
 
