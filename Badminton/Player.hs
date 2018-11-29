@@ -126,5 +126,5 @@ returnTo = undefined
 idlePose :: Pose
 idlePose = undefined
 
-lerpPose :: Pose -> Pose -> Lerp -> Pose
-lerpPose = undefined
+lerpWith :: Pose -> Pose -> Lerp -> Pose
+lerpWith = undefined
